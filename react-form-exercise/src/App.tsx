@@ -32,70 +32,69 @@ const App = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>User Form</h1>
+  <div className="container">
+    <h1>User Form</h1>
 
-      <form>
-        <div>
-          <label htmlFor="firstname">First Name:</label>
-          <input
-            type="text"
-            id="firstname"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          />
-        </div>
+    <form>
+      <div>
+        <label htmlFor="firstname">First Name:</label>
+        <input
+          type="text"
+          id="firstname"
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
+        />
+      </div>
 
-        <div>
-          <label htmlFor="lastname">Last Name:</label>
-          <input
-            type="text"
-            id="lastname"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
-        </div>
+      <div>
+        <label htmlFor="lastname">Last Name:</label>
+        <input
+          type="text"
+          id="lastname"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
+        />
+      </div>
 
-        <div>
-          <label htmlFor="age">Age:</label>
-          <input
-            type="number"
-            id="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
+      <div>
+        <label htmlFor="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </div>
 
-        <div>
-          <label>Favorite Foods:</label>
-
+      <div>
+        <label>Favorite Foods:</label>
+        <div className="checkbox-group">
           {["Chicken", "Beef", "Vegetables", "Dessert", "Pork"].map((food) => (
-            <div key={food}>
+            <label key={food}>
               <input
                 type="checkbox"
-                id={food}
                 checked={favoriteFoods.includes(food)}
                 onChange={() => handleFoodChange(food)}
               />
-              <label htmlFor={food}>{food}</label>
-            </div>
+              {food}
+            </label>
           ))}
         </div>
-      </form>
-
-      <button onClick={handleDisplay}>Display User</button>
-      <button onClick={handleClear}>Clear</button>
-
-      <div className="output" style={{ marginTop: "20px" }}>
-        {showGreeting && (
-          <p>
-            Hello {firstname} {lastname}. You are {age} years old and your
-            favorite foods are: {favoriteFoods.join(", ") || "None"}.
-          </p>
-        )}
       </div>
-    </div>
-  );
-};
+    </form>
 
+    <button onClick={handleDisplay}>Display User</button>
+    <button onClick={handleClear}>Clear</button>
+
+    <div className="output">
+      {showGreeting && (
+        <p>
+          Hello {firstname} {lastname}. You are {age} years old and your
+          favorite foods are: {favoriteFoods.join(", ") || "None"}.
+        </p>
+      )}
+    </div>
+  </div>
+);
+}
 export default App;
